@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="SectionInvalidHandler" type="System.Configuration.NoSuchHandler, System" />
+    <section name="SectionNotPresent" type="DeepConfig.Handlers.NameValueExtendedSectionHandler, DeepConfig" />
+    <section name="SectionHandlerThrowsOnRead" type="DeepConfig.TestTypes.HandlerCustom, Tests.DeepConfig" />
+    <section name="SectionHandlerThrowsOnWrite" type="DeepConfig.TestTypes.HandlerCustom, Tests.DeepConfig" />
+    <section name="SectionHandlerErrorsOnRead" type="DeepConfig.TestTypes.HandlerCustom, Tests.DeepConfig" />
+    <section name="SectionHandlerErrorsOnWrite" type="DeepConfig.TestTypes.HandlerCustom, Tests.DeepConfig" />
+  </configSections>
+  <SectionInvalidHandler>
+    <SomeSetting>True</SomeSetting>
+  </SectionInvalidHandler>
+  <SectionHandlerThrowsOnRead>
+    <ThrowOnRead>True</ThrowOnRead>
+  </SectionHandlerThrowsOnRead>
+  <SectionHandlerThrowsOnWrite>
+    <ThrowOnWrite>True</ThrowOnWrite>
+  </SectionHandlerThrowsOnWrite>
+  <SectionHandlerErrorsOnRead>
+    <HasErrorOnRead>True</HasErrorOnRead>
+  </SectionHandlerErrorsOnRead>
+  <SectionHandlerErrorsOnWrite>
+    <HasErrorOnWrite>True</HasErrorOnWrite>
+  </SectionHandlerErrorsOnWrite>
+</configuration>

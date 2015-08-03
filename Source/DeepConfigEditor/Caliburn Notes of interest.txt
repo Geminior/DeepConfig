@@ -1,0 +1,1 @@
+﻿Remember, if you have any activation logic that is dependent on the view being already loaded, you should override Screen.OnViewLoaded instead of/in combination with OnActivate.

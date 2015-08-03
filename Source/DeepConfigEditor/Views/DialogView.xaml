@@ -1,0 +1,34 @@
+﻿<local:MetroWindow x:Class="DeepConfigEditor.Views.DialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DeepConfigEditor.Components"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="DeepConfigEditor.Resources"
+        Title="{Binding Title}" Icon="{Binding IconUri}" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" >
+    <Grid MaxWidth="500">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <Border Margin="10">
+            <TextBlock x:Name="Message" TextWrapping="Wrap" />
+        </Border>
+        <Button x:Name="OpenLog" Grid.Row="1" Content="{lex:Loc CommonRes:ErrorLogLink}" Visibility="{Binding ShowErrorLogLink, Converter={StaticResource ConvVis}}" Style="{StaticResource LinkButton}" HorizontalAlignment="Center" Margin="0,10" />
+        <Grid Grid.IsSharedSizeScope="True" Grid.Row="2" Margin="6,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" SharedSizeGroup="Buttons" />
+                <ColumnDefinition Width="auto" SharedSizeGroup="Buttons" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Yes" Grid.Column="1" Content="{lex:Loc CommonRes:Yes}" Margin="4,0" IsDefault="True" Visibility="{Binding IsYesVisible, Converter={StaticResource ConvVis}}" />
+            <Button x:Name="Ok" Grid.Column="2" Content="{lex:Loc CommonRes:Ok}" Margin="4,0" MinWidth="80" IsDefault="True" Visibility="{Binding IsOkVisible, Converter={StaticResource ConvVis}}" />
+            <Button x:Name="No" Grid.Column="2" Content="{lex:Loc CommonRes:No}" Margin="4,0" MinWidth="80" Visibility="{Binding IsNoVisible, Converter={StaticResource ConvVis}}" />
+            <Button x:Name="Cancel" Grid.Column="3" Content="{lex:Loc CommonRes:Cancel}" Margin="4,0" MinWidth="80" IsCancel="True" Visibility="{Binding IsCancelVisible, Converter={StaticResource ConvVis}}" />
+        </Grid>
+    </Grid>
+</local:MetroWindow>

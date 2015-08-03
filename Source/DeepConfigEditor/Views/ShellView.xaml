@@ -1,0 +1,45 @@
+﻿<local:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:DeepConfigEditor.Components"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        x:Class="DeepConfigEditor.Views.ShellView"
+        x:Name="Shell"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="DeepConfigEditor.Resources"
+        MinWidth="525" MinHeight="350" Icon="../Resources/AppIcon.ico" IconStretch="Uniform"
+        Width="{Binding ShellConfig.Width, Mode=TwoWay}" Height="{Binding ShellConfig.Height, Mode=TwoWay}"
+        Top="{Binding ShellConfig.Top, Mode=TwoWay}" Left="{Binding ShellConfig.Left, Mode=TwoWay}"
+        WindowState="{Binding ShellConfig.WindowStartState, Mode=TwoWay, Converter={StaticResource ConvWinState}}"
+        Topmost="{Binding AlwaysOnTop}"
+        mc:Ignorable="d" 
+        d:DesignHeight="350" d:DesignWidth="525">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <local:AlternateContentControl x:Name="ActiveItem" />
+        <Border Visibility="{Binding IsBusy, Converter={StaticResource ConvVis}}" Cursor="Wait" Background="#02FFFFFF" />
+
+        <Border Padding="4" Grid.Row="1" Background="{DynamicResource AccentColorBrush2}">
+            <DockPanel >
+                <metro:ProgressRing 
+                DockPanel.Dock="Right"
+                Foreground="{StaticResource WhiteTextBrush}"
+                Width="20"
+                Height="20"
+                IsActive="{Binding IsBusy}" />
+
+                <TextBlock x:Name="StatusInfo_StatusState" TextAlignment="Right" DockPanel.Dock="Right" Foreground="{StaticResource WhiteTextBrush}" FontSize="12" VerticalAlignment="Center" />
+                <TextBlock x:Name="StatusInfo_StatusMessage" TextTrimming="CharacterEllipsis" DockPanel.Dock="Left" Foreground="{StaticResource WhiteTextBrush}" FontSize="12" VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+
+    </Grid>
+</local:MetroWindow>

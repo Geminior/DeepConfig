@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="DeepConfigEditor.Views.ConfigSourceSelection.FileSourceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:local="clr-namespace:DeepConfigEditor.Components"
+             lex:LocalizeDictionary.DesignCulture="en"
+             lex:ResxLocalizationProvider.DefaultAssembly="DeepConfigEditor.Resources"
+             lex:ResxLocalizationProvider.DefaultDictionary="ConfigSourceSelectRes"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="525">
+    <DockPanel Margin="20,10,20,0" RenderOptions.ClearTypeHint="Enabled" LastChildFill="True">
+        <TextBlock Text="{Binding IntroText}" Style="{StaticResource MediumText}" DockPanel.Dock="Top" />
+        <StackPanel Orientation="Horizontal"  Margin="0,10,0,20" DockPanel.Dock="Top">
+            <Button x:Name="Browse" Content="{lex:Loc CommonRes:Browse}" Margin="15,0" />
+            <CheckBox x:Name="RememberLastLocation" Content="{lex:Loc FileRememberLastLocation}" ToolTip="{lex:Loc FileRememberLastLocationTooltip}" />
+            <Button x:Name="ResetLocation" Style="{StaticResource LinkButton}" Content="{lex:Loc ResetLocationCaption}" ToolTip="{lex:Loc ResetLocationTooltip}" VerticalAlignment="Center" Margin="5,0" />
+        </StackPanel>
+        <Grid Visibility="{Binding ShowRecentList, Converter={StaticResource ConvVis}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{lex:Loc FileOpenOptionTwo}" Style="{StaticResource MediumText}"  />
+
+            <local:SimpleButtonList Grid.Row="1" Margin="0,10" ItemsSource="{Binding RecentFiles}" ItemTemplate="{StaticResource MruListItem}" ItemContainerStyle="{StaticResource MruListItemStyle}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+        </Grid>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,7 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	
+	<Import Project="StyleCop\StyleCop.Targets" />
+	
+	<Import Project="ExtensionPack\MSBuild.ExtensionPack.VersionNumber.DeepPrinciple.targets" />
+	
+</Project>

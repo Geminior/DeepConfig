@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="MissingValue" />
+    <add value="MissingKey" />
+    <add />
+    <someothernode />
+    <add key="Valid" value="ValidValue" />
+  </appSettings>
+</configuration>

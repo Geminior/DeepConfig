@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3CCE7F99-8DCA-4026-AF3A-40E2E07DB419}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeepConfig</RootNamespace>
+    <AssemblyName>Tests.DeepConfig</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugWithCodeAnalysis|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugWithCodeAnalysis\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\DeepConfig.Tests.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FakeItEasy">
+      <HintPath>..\..\References\FakeItEasy.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\..\References\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Spec\ConfigMasterTests.cs" />
+    <Compile Include="CultureContext.cs" />
+    <Compile Include="Spec\ConfigChangedEventArgsTests.cs" />
+    <Compile Include="Spec\ConfigErrorTests.cs" />
+    <Compile Include="Spec\ConfigExceptionTests.cs" />
+    <Compile Include="Spec\ConfigSectionAttributeTests.cs" />
+    <Compile Include="Spec\ConfigSectionUIAttributeTests.cs" />
+    <Compile Include="Spec\ConfigSettingAttributeTests.cs" />
+    <Compile Include="Spec\ConfigSettingUIAttributeTests.cs" />
+    <Compile Include="Spec\ConfigurationRedirectTests.cs" />
+    <Compile Include="Spec\Cryptography\AesCryptoProviderTests.cs" />
+    <Compile Include="Spec\Handlers\GenericTypeSectionHandlerTests.cs" />
+    <Compile Include="Spec\Providers\DefaultFileConfigProviderTests.cs" />
+    <Compile Include="Spec\Providers\FileConfigProviderTests.cs" />
+    <Compile Include="Spec\Providers\MemoryConfigProviderTests.cs" />
+    <Compile Include="Spec\Providers\CompositeConfigProviderTests.cs" />
+    <Compile Include="Spec\Providers\MultiFileConfigProviderTests.cs" />
+    <Compile Include="Spec\Providers\ProviderMappingTests.cs" />
+    <Compile Include="Spec\AutoSingletonConfigTests.cs" />
+    <Compile Include="Spec\SingletonConfigTests.cs" />
+    <Compile Include="Spec\Testing\TestServiceTests.cs" />
+    <Compile Include="Spec\Utilities\MsgTests.cs" />
+    <Compile Include="Spec\Utilities\EnsureTests.cs" />
+    <Compile Include="Spec\Utilities\SimpleCacheTests.cs" />
+    <Compile Include="TestExtensions.cs" />
+    <Compile Include="TestTypes\AbstractList.cs" />
+    <Compile Include="TestTypes\AttributedClass.cs" />
+    <Compile Include="TestTypes\ConfigComplex.cs" />
+    <Compile Include="TestTypes\ConfigComplexAbstract.cs" />
+    <Compile Include="TestTypes\ConfigComplexSub.cs" />
+    <Compile Include="TestTypes\ConfigComplexWithCustomGetOnly.cs" />
+    <Compile Include="TestTypes\ConfigWithCircularReference.cs" />
+    <Compile Include="TestTypes\ConfigWithCustomHandler.cs" />
+    <Compile Include="TestTypes\ConfigSilly.cs" />
+    <Compile Include="TestTypes\ConfigWithLists.cs" />
+    <Compile Include="TestTypes\AttributedSubClass.cs" />
+    <Compile Include="TestTypes\ConfigWithDateTimeProp.cs" />
+    <Compile Include="TestTypes\ConfigWithNullables.cs" />
+    <Compile Include="TestTypes\CryptoCustom.cs" />
+    <Compile Include="TestTypes\HandlerCustom.cs" />
+    <Compile Include="Spec\Utilities\ConfigHelperTests.cs" />
+    <Compile Include="Spec\ConfigManagerTests.cs" />
+    <Compile Include="Spec\Handlers\NameValueExtendedSectionHandlerTests.cs" />
+    <Compile Include="Spec\NameValueSettingsTests.cs" />
+    <Compile Include="TestConfigFactory.cs" />
+    <Compile Include="Spec\ThreadingTests.cs" />
+    <Compile Include="TestTypes\ConfigWithBasicProps.cs" />
+    <Compile Include="TestTypes\ConfigInvalidCtor.cs" />
+    <Compile Include="TestTypes\DeepCfgTestException.cs" />
+    <Compile Include="TestTypes\HandlerInvalidCtor.cs" />
+    <Compile Include="TestTypes\IComplexType.cs" />
+    <Compile Include="TestTypes\InheritedPropAttribute.cs" />
+    <Compile Include="TestTypes\ListWithNoDefaultCtor.cs" />
+    <Compile Include="TestTypes\SingletonAutoType.cs" />
+    <Compile Include="TestTypes\SingletonType.cs" />
+    <Compile Include="TestTypes\NestedSingletonUse.cs" />
+    <Compile Include="Spec\Cryptography\CryptoConfigSectionHandlerTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spec\Utilities\XmlUtilTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestXml\MgrConfigWithErrors.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestXml\InvalidNameValueEntries.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeepConfig\DeepConfig.csproj">
+      <Project>{8D56A19B-DD46-4397-B337-8A9E4840F60B}</Project>
+      <Name>DeepConfig</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestXml\InvalidSections.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestXml\MgrConfigWithNameValue.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestXml\Empty.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestXml\RubbishXml.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\ExternalTools\DeepPrinciple.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

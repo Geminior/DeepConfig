@@ -1,0 +1,1194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Caliburn.Micro.Extras</name>
+    </assembly>
+    <members>
+        <member name="T:Caliburn.Micro.Extras.ActionCommand">
+            <summary>
+            Wraps a ViewModel method (with guard) in an <see cref="T:System.Windows.Input.ICommand"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ActionCommand.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.ActionCommand"/> class.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="methodName">Name of the method.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ActionCommand.Execute(System.Object)">
+            <summary>
+            Defines the method to be called when the command is invoked.
+            </summary>
+            <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ActionCommand.CanExecute(System.Object)">
+            <summary>
+            Defines the method that determines whether the command can execute in its current state.
+            </summary>
+            <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
+            <returns>true if this command can be executed; otherwise, false.</returns>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.ActionCommand.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether the command should execute.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ContentHost">
+            <summary>
+            Custom <see cref="T:System.Windows.Controls.ContentControl"/> that caches all views so that it can quickly switch between them.
+            </summary>
+            <remarks>
+            Models have to implement <see cref="T:Caliburn.Micro.IDeactivate"/> so views can be cached.
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.ContentHost.CurrentModelProperty">
+            <summary>
+            A dependency property for attaching a model to the UI.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ContentHost.CurrentModel">
+            <summary>
+            Gets or sets the current model.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.DebugLogger">
+            <summary>
+              A simple logger thats logs everything to the debugger.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DebugLogger.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.DebugLogger"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DebugLogger.Info(System.String,System.Object[])">
+            <summary>
+            Logs the message as info.
+            </summary>
+            <param name="format">A formatted message.</param>
+            <param name="args">Parameters to be injected into the formatted message.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DebugLogger.Warn(System.String,System.Object[])">
+            <summary>
+            Logs the message as a warning.
+            </summary>
+            <param name="format">A formatted message.</param>
+            <param name="args">Parameters to be injected into the formatted message.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DebugLogger.Error(System.Exception)">
+            <summary>
+            Logs the exception.
+            </summary>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ContinueResultDecorator">
+            <summary>
+            A result decorator which executes a coroutine when the wrapped result was cancelled.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ResultDecoratorBase">
+            <summary>
+            Base class for all <see cref="T:Caliburn.Micro.IResult"/> decorators.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultDecoratorBase.#ctor(Caliburn.Micro.IResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.ResultDecoratorBase"/> class.
+            </summary>
+            <param name="result">The result to decorate.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultDecoratorBase.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultDecoratorBase.OnInnerResultCompleted(Caliburn.Micro.ActionExecutionContext,Caliburn.Micro.IResult,Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Called when the execution of the decorated result has completed.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="innerResult">The decorated result.</param>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultDecoratorBase.OnCompleted(Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Raises the <see cref="E:Caliburn.Micro.Extras.ResultDecoratorBase.Completed"/> event.
+            </summary>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.ResultDecoratorBase.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ContinueResultDecorator.#ctor(Caliburn.Micro.IResult,System.Func{System.Collections.Generic.IEnumerable{Caliburn.Micro.IResult}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.ContinueResultDecorator"/> class.
+            </summary>
+            <param name="result">The result to decorate.</param>
+            <param name="coroutine">The coroutine to execute when <paramref name="result"/> was canceled.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ContinueResultDecorator.OnInnerResultCompleted(Caliburn.Micro.ActionExecutionContext,Caliburn.Micro.IResult,Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Called when the execution of the decorated result has completed.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="innerResult">The decorated result.</param>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.OverrideCancelResultDecorator">
+            <summary>
+            A result decorator that overrides <see cref="F:Caliburn.Micro.ResultCompletionEventArgs.WasCancelled"/> of the decorated <see cref="T:Caliburn.Micro.IResult"/> instance.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OverrideCancelResultDecorator.#ctor(Caliburn.Micro.IResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.OverrideCancelResultDecorator"/> class.
+            </summary>
+            <param name="result">The result to decorate.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OverrideCancelResultDecorator.OnInnerResultCompleted(Caliburn.Micro.ActionExecutionContext,Caliburn.Micro.IResult,Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Called when the execution of the decorated result has completed.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="innerResult">The decorated result.</param>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.RescueResultDecorator`1">
+            <summary>
+            A result decorator which rescues errors from the decorated result by executing a rescue coroutine.
+            </summary>
+            <typeparam name="TException">The type of the exception we want to perform the rescue on</typeparam>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RescueResultDecorator`1.#ctor(Caliburn.Micro.IResult,System.Func{`0,System.Collections.Generic.IEnumerable{Caliburn.Micro.IResult}},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.RescueResultDecorator`1"/> class.
+            </summary>
+            <param name="result">The result to decorate.</param>
+            <param name="coroutine">The rescue coroutine.</param>
+            <param name="cancelResult">Set to true to cancel the result after executing rescue.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RescueResultDecorator`1.OnInnerResultCompleted(Caliburn.Micro.ActionExecutionContext,Caliburn.Micro.IResult,Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Called when the execution of the decorated result has completed.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="innerResult">The decorated result.</param>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.EventAggregatorExtensions">
+            <summary>
+            Extensions for <see cref="T:Caliburn.Micro.IEventAggregator"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.EventAggregatorExtensions.PublishOnCurrentThread(Caliburn.Micro.IEventAggregator,System.Object)">
+            <summary>
+              Publishes a message on the current thread (synchrone).
+            </summary>
+            <param name="eventAggregator">The event aggregator.</param>
+            <param name = "message">The message instance.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.EventAggregatorExtensions.PublishOnBackgroundThread(Caliburn.Micro.IEventAggregator,System.Object)">
+            <summary>
+              Publishes a message on a background thread (async).
+            </summary>
+            <param name="eventAggregator">The event aggregator.</param>
+            <param name = "message">The message instance.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.EventAggregatorExtensions.PublishOnUIThread(Caliburn.Micro.IEventAggregator,System.Object)">
+            <summary>
+              Publishes a message on the UI thread.
+            </summary>
+            <param name="eventAggregator">The event aggregator.</param>
+            <param name = "message">The message instance.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.EventAggregatorExtensions.BeginPublishOnUIThread(Caliburn.Micro.IEventAggregator,System.Object)">
+            <summary>
+              Publishes a message on the UI thread asynchrone.
+            </summary>
+            <param name="eventAggregator">The event aggregator.</param>
+            <param name = "message">The message instance.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.EventAggregatorExtensions.PublishOnUIThreadAsync(Caliburn.Micro.IEventAggregator,System.Object)">
+            <summary>
+              Publishes a message on the UI thread asynchrone.
+            </summary>
+            <param name="eventAggregator">The event aggregator.</param>
+            <param name="message">The message instance.</param>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.IModuleBootstrapper">
+            <summary>
+            Interface for module bootstrappers.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IModuleBootstrapper.Initialize">
+            <summary>
+            Initializes the module.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ModuleConventions">
+            <summary>
+            Conventions installer for ExternalModules support.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ModuleConventions.Install">
+            <summary>
+            Installs the conventions needed for <see cref="T:Caliburn.Micro.Extras.IModuleBootstrapper"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ModuleConventions.InitializeAssembly(System.Reflection.Assembly)">
+            <summary>
+            Initializes the assembly.
+            </summary>
+            <param name="assembly">The assembly.</param>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ResultExtensions">
+            <summary>
+            Extension methods for <see cref="T:Caliburn.Micro.IResult"/> instances.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultExtensions.WhenCancelled(Caliburn.Micro.IResult,System.Func{System.Collections.Generic.IEnumerable{Caliburn.Micro.IResult}})">
+            <summary>
+            Adds behavior to the result which is executed when the <paramref name = "result" /> was cancelled.
+            </summary>
+            <param name="result">The result to decorate.</param>
+            <param name="coroutine">The coroutine to execute when <paramref name="result"/> was canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultExtensions.OverrideCancel(Caliburn.Micro.IResult)">
+            <summary>
+            Overrides <see cref="F:Caliburn.Micro.ResultCompletionEventArgs.WasCancelled"/> of the decorated <paramref name="result"/> instance.
+            </summary>
+            <param name="result">The result to decorate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultExtensions.Rescue``1(Caliburn.Micro.IResult,System.Func{``0,System.Collections.Generic.IEnumerable{Caliburn.Micro.IResult}},System.Boolean)">
+            <summary>
+            Rescues <typeparamref name = "TException" /> from the decorated <paramref name = "result" /> by executing a <paramref name = "rescue" /> coroutine.
+            </summary>
+            <typeparam name = "TException">The type of the exception we want to perform the rescue on.</typeparam>
+            <param name="result">The result to decorate.</param>
+            <param name="rescue">The rescue coroutine.</param>
+            <param name="cancelResult">Set to true to cancel the result after executing rescue.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ResultExtensions.Rescue(Caliburn.Micro.IResult,System.Func{System.Exception,System.Collections.Generic.IEnumerable{Caliburn.Micro.IResult}},System.Boolean)">
+            <summary>
+            Rescues any exception from the decorated <paramref name = "result" /> by executing a <paramref name = "rescue" /> coroutine.
+            </summary>
+            <param name="result">The result to decorate.</param>
+            <param name="rescue">The rescue coroutine.</param>
+            <param name="cancelResult">Set to true to cancel the result after executing rescue.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.CancelResult">
+            <summary>
+            A result that is always canceled.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.CancelResult.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.CancelResult.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.DelegateResult">
+            <summary>
+            A result that executes an <see cref="T:System.Action"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DelegateResult.#ctor(System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.DelegateResult"/> class.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DelegateResult.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.DelegateResult.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.DelegateResult`1">
+            <summary>
+            A result that executes a <see cref="T:System.Func`1"/>
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DelegateResult`1.#ctor(System.Func{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.DelegateResult`1"/> class.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DelegateResult`1.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.DelegateResult`1.Result">
+            <summary>
+            Gets the result.
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.DelegateResult`1.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.MessengerResult">
+            <summary>
+            A Caliburn.Micro Result that lets you show messages.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessengerResult.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.MessengerResult"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessengerResult.Caption(System.String)">
+            <summary>
+            Sets the caption.
+            </summary>
+            <param name="text">The caption text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessengerResult.Buttons(Caliburn.Micro.Extras.MessageButton)">
+            <summary>
+            Sets the button.
+            </summary>
+            <param name="buttons">The button.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessengerResult.Image(Caliburn.Micro.Extras.MessageImage)">
+            <summary>
+            Sets the image.
+            </summary>
+            <param name="icon">The image.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessengerResult.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.MessengerResult.Result">
+            <summary>
+            Gets the message
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.MessengerResult.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.OpenFileResult`1">
+            <summary>
+            A Caliburn.Micro Result that lets you open a file.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult`1.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.OpenFileResult`1"/> class.
+            </summary>
+            <param name="multiselect">Determines wether it is allows to select multiple files.</param>
+            <param name="title">The title of the dialog.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult`1.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult`1.OnCompleted(Caliburn.Micro.Extras.IOpenFileService,Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Handles the completion of the execution.
+            </summary>
+            <param name="openFileService">The open file service.</param>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult`1.FilterFiles(System.String)">
+            <summary>
+            Create file filter for the dialog.
+            </summary>
+            <param name="filter">The filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult`1.In(System.String)">
+            <summary>
+            Sets the initial <paramref name = "directory" /> of the dialog
+            </summary>
+            <param name="directory">The directory.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileResult`1.Result">
+            <summary>
+            Gets the opened file(s).
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.OpenFileResult`1.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.OpenFileResult">
+            <summary>
+            A Caliburn.Micro Result that lets you open a file.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult.OneFile(System.String)">
+            <summary>
+            Open a single file.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileResult.MultipleFiles(System.String)">
+            <summary>
+            Open multiple files.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.SaveFileResult">
+            <summary>
+            A Caliburn.Micro Result that lets you save a file.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.SaveFileResult"/> class.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.Execute(Caliburn.Micro.ActionExecutionContext)">
+            <summary>
+            Executes the result using the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.OnCompleted(Caliburn.Micro.Extras.ISaveFileService,Caliburn.Micro.ResultCompletionEventArgs)">
+            <summary>
+            Handles the completion of the execution.
+            </summary>
+            <param name="saveFileSerivce">The save file service.</param>
+            <param name="args">The <see cref="T:Caliburn.Micro.ResultCompletionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.FilterFiles(System.String,System.String)">
+            <summary>
+            Create file filter for the dialog.
+            </summary>
+            <param name="filter">The file type filter.</param>
+            <param name="defaultExtension">The default file name extension applied to files that are saved.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.In(System.String)">
+            <summary>
+            Sets the initial <paramref name = "directory" /> of the dialog
+            </summary>
+            <param name="directory">The directory.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.PromptForOverwrite">
+            <summary>
+            Ask the user for permission if the file will be overriden.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.PromptForCreate">
+            <summary>
+            Ask the user for permission if a new file will be created.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileResult.OneFile(System.String)">
+            <summary>
+            Save a single file.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileResult.Result">
+            <summary>
+            Gets the opened file(s).
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.SaveFileResult.Completed">
+            <summary>
+            Occurs when execution has completed.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.MessageResult">
+            <summary>
+            Available message results.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageResult.None">
+            <summary>
+            No result available.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageResult.OK">
+            <summary>
+            Message is acknowledged.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageResult.Cancel">
+            <summary>
+            Message is canceled.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageResult.Yes">
+            <summary>
+            Message is acknowledged with yes.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageResult.No">
+            <summary>
+            Message is acknowledged with no.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.MessageButton">
+            <summary>
+            Available message buttons.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageButton.OK">
+            <summary>
+            OK button.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageButton.OKCancel">
+            <summary>
+            OK and Cancel buttons.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageButton.YesNoCancel">
+            <summary>
+            Yes, No and Cancel buttons.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageButton.YesNo">
+            <summary>
+            Yes and No buttons.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.MessageImage">
+            <summary>
+            Available message images.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageImage.None">
+            <summary>
+            Show no image.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageImage.Error">
+            <summary>
+            Error image.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageImage.Question">
+            <summary>
+            Question image.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageImage.Warning">
+            <summary>
+            Warning image.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.Extras.MessageImage.Information">
+            <summary>
+            Information image.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.IMessageService">
+            <summary>
+            Interface for the message service.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IMessageService.Show(System.String,System.String,Caliburn.Micro.Extras.MessageButton,Caliburn.Micro.Extras.MessageImage)">
+            <summary>
+            Shows the specified message and returns the result.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="caption">The caption.</param>
+            <param name="button">The button.</param>
+            <param name="icon">The icon.</param>
+            <returns>The <see cref="T:Caliburn.Micro.Extras.MessageResult"/>.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IMessageService.ShowAsync(System.String,System.String,Caliburn.Micro.Extras.MessageButton,Caliburn.Micro.Extras.MessageImage)">
+            <summary>
+            Shows the specified message and allows to await for the message to complete.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="caption">The caption.</param>
+            <param name="button">The button.</param>
+            <param name="icon">The icon.</param>
+            <returns>A Task containing the <see cref="T:Caliburn.Micro.Extras.MessageResult"/>.</returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.IOpenFileService">
+            <summary>
+            Interface for the Open File service.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IOpenFileService.DetermineFile">
+            <summary>
+            Determines the filename of the file what will be used.
+            </summary>
+            <returns><c>true</c> if a file is selected; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.IOpenFileService.File">
+            <summary>
+            Gets a <see cref="T:System.IO.FileInfo"/> object for the selected file. If multiple files are selected, returns the first selected file.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.IOpenFileService.Files">
+            <summary>
+            Gets a collection of <see cref="T:System.IO.FileInfo"/> objects for the selected files.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.IOpenFileService.Filter">
+            <summary>
+            Gets or sets a filter string that specifies the file types and descriptions to display.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.IOpenFileService.Multiselect">
+            <summary>
+            Gets or sets a value indicating whether this instance is allows to select multiple files.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.IOpenFileService.InitialDirectory">
+            <summary>
+             Gets or sets the initial directory displayed by the file dialog box.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.IOpenFileService.Title">
+            <summary>
+            Gets or sets a string shown in the title bar of the file dialog.
+            </summary> 
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ISaveFileService">
+            <summary>
+            Interface for the Save File service.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ISaveFileService.DetermineFile">
+            <summary>
+            Determines the filename of the file what will be used.
+            </summary>
+            <returns><c>true</c> if a file is selected; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ISaveFileService.OpenFile">
+            <summary>
+            Opens the file specified by the <see cref="P:Caliburn.Micro.Extras.ISaveFileService.SafeFileName"/> property.
+            </summary>
+            <returns>A read-write stream for the file.</returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.DefaultExt">
+            <summary>
+            Gets or sets the default file name extension applied to files that are saved.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.Filter">
+            <summary>
+            Gets or sets a filter string that specifies the files types and descriptions to display.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.SafeFileName">
+            <summary>
+            Gets the file name for the selected file.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.File">
+            <summary>
+            Gets a <see cref="T:System.IO.FileInfo"/> object for the selected file.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.CreatePrompt">
+            <summary>
+            Gets or sets a value indicating whether this instance prompts the user for permission to create a file if the user specifies a file that does not exist.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.OverwritePrompt">
+            <summary>
+            Gets or sets a value indicating whether this instance displays a warning if the user specifies the name of a file that already exists.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.InitialDirectory">
+            <summary>
+             Gets or sets the initial directory displayed by the file dialog box.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ISaveFileService.Title">
+            <summary>
+            Gets or sets a string shown in the title bar of the file dialog.
+            </summary> 
+        </member>
+        <member name="T:Caliburn.Micro.Extras.MessageService">
+            <summary>
+            Message service that implements the <see cref="T:Caliburn.Micro.Extras.IMessageService"/> by using the <see cref="T:System.Windows.MessageBox"/> class.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessageService.Show(System.String,System.String,Caliburn.Micro.Extras.MessageButton,Caliburn.Micro.Extras.MessageImage)">
+            <summary>
+            Shows the specified message and returns the result.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="caption">The caption.</param>
+            <param name="button">The button.</param>
+            <param name="icon">The icon.</param>
+            <returns>The <see cref="T:Caliburn.Micro.Extras.MessageResult"/>.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.MessageService.ShowAsync(System.String,System.String,Caliburn.Micro.Extras.MessageButton,Caliburn.Micro.Extras.MessageImage)">
+            <summary>
+            Shows the specified message and allows to await for the message to complete.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="caption">The caption.</param>
+            <param name="button">The button.</param>
+            <param name="icon">The icon.</param>
+            <returns>A Task containing the <see cref="T:Caliburn.Micro.Extras.MessageResult"/>.</returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.OpenFileService">
+            <summary>
+            Service to open files.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.OpenFileService"/> class.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.OpenFileService.DetermineFile">
+            <summary>
+            Determines the filename of the file what will be used.
+            </summary>
+            <returns>
+              <c>true</c> if a file is selected; otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileService.File">
+            <summary>
+            Gets a <see cref="T:System.IO.FileInfo"/> object for the selected file. If multiple files are selected, returns the first selected file.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileService.Files">
+            <summary>
+            Gets a collection of <see cref="T:System.IO.FileInfo"/> objects for the selected files.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileService.Filter">
+            <summary>
+            Gets or sets a filter string that specifies the file types and descriptions to display.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileService.Multiselect">
+            <summary>
+            Gets or sets a value indicating whether this instance is allows to select multiple files.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileService.InitialDirectory">
+            <summary>
+             Gets or sets the initial directory displayed by the file dialog box.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.OpenFileService.Title">
+            <summary>
+            Gets or sets a string shown in the title bar of the file dialog.
+            </summary> 
+        </member>
+        <member name="T:Caliburn.Micro.Extras.SaveFileService">
+            <summary>
+            Service to save files.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.SaveFileService"/> class.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileService.DetermineFile">
+            <summary>
+            Determines the filename of the file what will be used.
+            </summary>
+            <returns>
+              <c>true</c> if a file is selected; otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.SaveFileService.OpenFile">
+            <summary>
+            Opens the file specified by the <see cref="P:Caliburn.Micro.Extras.SaveFileService.SafeFileName"/> property.
+            </summary>
+            <returns>
+            A read-write stream for the file.
+            </returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.DefaultExt">
+            <summary>
+            Gets or sets the default file name extension applied to files that are saved.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.Filter">
+            <summary>
+            Gets or sets a filter string that specifies the files types and descriptions to display.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.SafeFileName">
+            <summary>
+            Gets the file name for the selected file.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.File">
+            <summary>
+            Gets a <see cref="T:System.IO.FileInfo"/> object for the selected file.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.CreatePrompt">
+            <summary>
+            Gets or sets a value indicating whether this instance prompts the user for permission to create a file if the user specifies a file that does not exist.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.OverwritePrompt">
+            <summary>
+            Gets or sets a value indicating whether this instance displays a warning if the user specifies the name of a file that already exists.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.InitialDirectory">
+            <summary>
+             Gets or sets the initial directory displayed by the file dialog box.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.SaveFileService.Title">
+            <summary>
+            Gets or sets a string shown in the title bar of the file dialog.
+            </summary> 
+        </member>
+        <member name="T:Caliburn.Micro.Extras.DataAnnotationsValidator">
+            <summary>
+            Helper class to use <see cref="N:System.ComponentModel.DataAnnotations"/> attributes for validation.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.IValidator">
+            <summary>
+            Interface for a validator.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IValidator.CanValidateProperty(System.String)">
+            <summary>
+            Determines whether this instance can validate the specified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>True, if this instance can validate the property.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IValidator.ValidateProperty(System.String,System.Object)">
+            <summary>
+            Validates the specified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The property value.</param>
+            <returns>The list of validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DataAnnotationsValidator.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.DataAnnotationsValidator"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DataAnnotationsValidator.CanValidateProperty(System.String)">
+            <summary>
+            Determines whether this instance can validate the specified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>
+            True, if this instance can validate the property.
+            </returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.DataAnnotationsValidator.ValidateProperty(System.String,System.Object)">
+            <summary>
+            Validates the specified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The property value.</param>
+            <returns>
+            The list of validation errors.
+            </returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.RangeValidationRule`1">
+            <summary>
+            Performs a range validation.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ValidationRule`1">
+            <summary>
+            Provides a way to create a custom rule in order to check the validity of a value.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.IValidationRule">
+            <summary>
+            Provides a way to create a custom rule in order to check the validity of a value. 
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.IValidationRule.Validate(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Performs validation checks on a value.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="cultureInfo">The culture to use in this rule.</param>
+            <returns>A <see cref="T:Caliburn.Micro.Extras.ValidationResult"/> object.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationRule`1.Validate(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Performs validation checks on a value.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="cultureInfo">The culture to use in this rule.</param>
+            <returns>
+            A <see cref="T:Caliburn.Micro.Extras.ValidationResult"/> object.
+            </returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationRule`1.OnValidate(`0,System.Globalization.CultureInfo)">
+            <summary>
+            Performs validation checks on a value.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="cultureInfo">The culture to use in this rule.</param>
+            <returns>A <see cref="T:Caliburn.Micro.Extras.ValidationResult"/> object.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RangeValidationRule`1.#ctor(`0,`0,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.RangeValidationRule`1"/> class.
+            </summary>
+            <param name="minimum">The minimum value.</param>
+            <param name="maximum">The maximum value.</param>
+            <param name="errorMessage">The error message.</param>
+            <param name="unitSymbol">The unit symbol.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RangeValidationRule`1.OnValidate(`0,System.Globalization.CultureInfo)">
+            <summary>
+            Performs validation checks on a value.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="cultureInfo">The culture to use in this rule.</param>
+            <returns>A <see cref="T:Caliburn.Micro.Extras.ValidationResult"/> object.</returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.RuleValidator">
+            <summary>
+            Helper for rule based validation.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RuleValidator.AddRule(System.String,Caliburn.Micro.Extras.IValidationRule)">
+            <summary>
+            Adds a <see cref="T:Caliburn.Micro.Extras.IValidationRule"/> to the validator.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="rule">The rule to add.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RuleValidator.AddRule``1(System.Linq.Expressions.Expression{System.Func{``0}},Caliburn.Micro.Extras.IValidationRule)">
+            <summary>
+            Adds a <see cref="T:Caliburn.Micro.Extras.IValidationRule"/> to the validator.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="rule">The rule to add.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RuleValidator.RemoveRules(System.String)">
+            <summary>
+            Removes all validation rules for a property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RuleValidator.RemoveRules``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Removes all validation rules for a property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RuleValidator.CanValidateProperty(System.String)">
+            <summary>
+            Determines whether this instance can validate the specified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>
+            True, if this instance can validate the property.
+            </returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.RuleValidator.ValidateProperty(System.String,System.Object)">
+            <summary>
+            Validates the specified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The property value.</param>
+            <returns>
+            The list of validation errors.
+            </returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.StringLengthValidationRule">
+            <summary>
+            Performs a length validation of a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.StringLengthValidationRule.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.StringLengthValidationRule"/> class.
+            </summary>
+            <param name="minimumLength">The minimum length.</param>
+            <param name="maximumLength">The maximum length.</param>
+            <param name="errorMessage">The error message.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.StringLengthValidationRule.OnValidate(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Performs validation checks on a value.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="cultureInfo">The culture to use in this rule.</param>
+            <returns>A <see cref="T:Caliburn.Micro.Extras.ValidationResult"/> object.</returns>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ValidationAdapter">
+            <summary>
+            A container for all <see cref="T:Caliburn.Micro.Extras.IValidator"/> instances used by an object.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.ValidateProperty``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Object)">
+            <summary>
+            Validates the property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="value">The value to validate.</param>
+            <returns>True, if validation succeeded.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.ValidateProperty(System.String,System.Object)">
+            <summary>
+            Validates the property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value to validate.</param>
+            <returns>True, if validation succeeded.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.Validate(System.Object)">
+            <summary>
+            Validates all properties of the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <returns>True, if any property has validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.GetPropertyError(System.String)">
+            <summary>
+            Gets all validation errors of the spezified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>List of validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.GetPropertyError``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Gets all validation errors of the spezified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <returns>List of validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.HasPropertyError(System.String)">
+            <summary>
+            Determines whether the spezified property has validation errors.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>True, if the property has validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.HasPropertyError``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Determines whether the spezified property has validation errors.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <returns>True, if the property has validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.GetErrors(System.String)">
+            <summary>
+            Gets all validation errors of the spezified property.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>List of validation errors.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationAdapter.OnErrorsChanged(System.String)">
+            <summary>
+            Called when a property was validated.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ValidationAdapter.Validators">
+            <summary>
+            Gets the validators.
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.Extras.ValidationAdapter.ErrorsChanged">
+            <summary>
+            Occurs when the validation errors have changed for a property or for the entire entity.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ValidationAdapter.HasErrors">
+            <summary>
+            Gets a value indicating whether any property has validation errors.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.Extras.ValidationResult">
+            <summary>
+            Represents a container for the results of a validation request.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationResult.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Micro.Extras.ValidationResult"/> class.
+            </summary>
+            <param name="isValid">if the </param>
+            <param name="errorDescription">The error description.</param>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationResult.Success">
+            <summary>
+            Represents the success of the validation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Micro.Extras.ValidationResult.Failure(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Represents failure of the validation.
+            </summary>
+            <param name="provider">An object that supplies culture-specific formatting information. </param>
+            <param name="format">A composite format string.</param>
+            <param name="args">An object array that contains zero or more objects to format.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ValidationResult.IsValid">
+            <summary>
+            Gets a value indicating whether validation was sucessful.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.Extras.ValidationResult.ErrorDescription">
+            <summary>
+            Gets the error message for the validation.
+            </summary>
+        </member>
+    </members>
+</doc>

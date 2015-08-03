@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <TestSillySection type="DeepConfig.TestTypes.ConfigSilly, Tests.DeepConfig, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <ComplexNotAConfigType />
+    <ComplexNotAConfigTypeGetOnly />
+  </TestSillySection>
+  <TestComplexSection type="DeepConfig.TestTypes.ConfigComplex, Tests.DeepConfig, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <SubAbstract />
+    <SubInterface />
+  </TestComplexSection>
+  <TestListSection type="DeepConfig.TestTypes.ConfigWithLists, Tests.DeepConfig, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <StringsColOne type="DeepConfig.TestTypes.AbstractList, Tests.DeepConfig, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <StringsColTwo type="DeepConfig.TestTypes.ListWithNoDefaultCtor, Tests.DeepConfig, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <DerivedColOne />
+  </TestListSection>
+</configuration>

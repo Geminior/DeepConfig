@@ -1,0 +1,25 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+  <TemplateData>
+
+    <Name>DeepConfig TripleDES Crypto Provider</Name>
+    <DefaultName>NewConfigCrypto.tt</DefaultName>
+    <Description>Creates a TripleDES crypto provider implementation for use with the DeepConfig framework</Description>
+    <ProjectType>CSharp</ProjectType>
+    <Icon>crypto.ico</Icon>
+    <AppendDefaultFileExtension>true</AppendDefaultFileExtension>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+  </TemplateData>
+
+  <TemplateContent>
+
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+
+    <ProjectItem OpenInEditor="false" SubType="" TargetFileName="$fileinputname$.tt" ReplaceParameters="true">DeepCfgTripleDesCrypto.tt</ProjectItem>
+
+  </TemplateContent>
+
+</VSTemplate>

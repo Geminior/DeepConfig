@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+	
+	<PropertyGroup>
+		<Solution>DeepPrinciple.DeepConfig</Solution>
+	</PropertyGroup>
+		
+	<Target Name="Build">
+		<ItemGroup>
+			<Outputs Include="Deep*/**/bin/Release/*.dll;Deep*/**/bin/Release/*.xml;Deep*/**/bin/Release/*.pdb" Exclude="**/DeepConfig.Tests/**/*.*" />
+		</ItemGroup>
+	
+		<Message Text="Starting to Build" /> 
+		<MSBuild Projects="$(Solution).sln" Properties="Configuration=Release" Targets="Rebuild" />
+		<Copy SourceFiles="@(Outputs)" DestinationFolder="..\Precompiled" />
+	</Target>
+	
+	<Target Name="CleanSrc">
+	
+		<Delete Files="$(Solution).zip" />
+
+		<ItemGroup>
+			<Excludes Include="**/obj/**" />
+			<Excludes Include="**/bin/**" />
+			<Excludes Include="**/doc/**" />
+			<Excludes Include="**/*.scc" />
+			<Excludes Include="**/*.vssscc" />
+			<Excludes Include="**/*.vspscc" />
+			<Excludes Include="**/*.user" />
+			<Excludes Include="**/*.suo" />
+			<Excludes Include="**/TestResults/**/*.*" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<Source Include="**/*.*" Exclude="@(Excludes)"/>
+		</ItemGroup>
+		
+		<Zip Files="@(Source)" ZipFileName="$(Solution).zip" />
+	</Target>
+</Project>

@@ -1,0 +1,13 @@
+startup
+
+plugin samples
+
+config
+
+keyboard short cuts
+
+design
+
+AsObservable on config state Subject in IActionContext to guard against abuse
+
+Catch(Observalbe.Return(false).Do(msgbox) 

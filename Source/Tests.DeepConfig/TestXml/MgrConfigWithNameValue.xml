@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="SectionBasic" type="System.Configuration.NameValueSectionHandler, System" />
+    <section name="SectionExtended" type="DeepConfig.Handlers.NameValueExtendedSectionHandler, DeepConfig" />
+  </configSections>
+  <appSettings>
+    <add key="AppSetting1" value="AppSettingValue1" />
+  </appSettings>
+  <SectionBasic>
+    <add key="SectionBasicSetting1" value="SectionBasicValue1" />
+  </SectionBasic>
+  <SectionExtended>
+    <add key="SectionExtendedSetting1" value="SectionExtendedValue1" />
+  </SectionExtended>
+</configuration>
